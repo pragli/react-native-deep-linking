@@ -20,13 +20,13 @@ const fetchQueries = (expression) => {
 const execRegex = (queries, expression, path) => {
   let regexExpression = expression;
   queries.forEach((query) => {
-    regexExpression = regexExpression.replace(query, '(.*)');
+    regexExpression = regexExpression.replace(query, "(.*)");
   });
 
-  const queryRegex = new RegExp(regexExpression, 'g');
+  const queryRegex = new RegExp(regexExpression, "g");
   const match = queryRegex.exec(path);
 
-  if (match && !match[1].includes('/')) {
+  if (match && !match[1].includes("/")) {
     let results = { path: match[0] };
     queries.forEach((query, index) => {
       const id = query.substring(1);
@@ -55,7 +55,7 @@ const evaluateExpression = (expression, path, scheme) => {
     // Error, expression is not regex
   }
 
-  if (typeof expression === 'string' && expression.includes(':')) {
+  if (typeof expression === "string" && expression.includes(":")) {
     const queries = fetchQueries(expression);
     if (queries.length) {
       return execRegex(queries, expression, path);
@@ -88,7 +88,7 @@ const addRoute = (expression, callback) => {
 };
 
 const removeRoute = (expression) => {
-  const index = routes.findIndex(route => route.expression === expression);
+  const index = routes.findIndex((route) => route.expression === expression);
   routes.splice(index, 1);
 };
 
@@ -108,6 +108,7 @@ const DeepLinking = {
   addRoute,
   addScheme,
   evaluateUrl,
+  evaluateExpression,
   removeRoute,
   resetSchemes,
   resetRoutes,

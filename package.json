@@ -1,6 +1,6 @@
 {
-  "name": "react-native-deep-linking",
-  "version": "0.0.0-development",
+  "name": "@pragli/react-native-deep-linking",
+  "version": "0.0.1",
   "description": "React Native URL routing library",
   "main": "index.js",
   "files": [
